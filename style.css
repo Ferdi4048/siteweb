@@ -1,0 +1,52 @@
+%%writefile style.css
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Center the main header and style it */
+h1, h2 {
+    text-align: center;
+    color: #007bff;
+}
+
+/* Style for the navigation sidebar */
+.stSidebar .sidebar-content {
+    background-color: #333;
+    color: white;
+}
+
+.stSidebar .sidebar-content .stButton button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+.stSidebar .sidebar-content .stButton button:hover {
+    background-color: #0056b3;
+}
+
+/* Styling for table headers */
+table th {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    padding: 10px;
+}
+
+/* Styling for table cells */
+table td {
+    border: 1px solid #007bff;
+    padding: 10px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 20px;
+}
