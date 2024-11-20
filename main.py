@@ -5,11 +5,70 @@ from PIL import Image
 # Page configuration
 st.set_page_config(page_title="DataDynamite Solution", layout="wide")
 
-def load_css(file_path):
-    with open(file_path, "r") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-load_css("style.css")
+# Custom CSS for styling
+st.markdown("""<style>
+header, footer {visibility: hidden;}
+.main {background-color: #f5f5f5; padding: 2rem;}
+.stRadio > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.stRadio > div > label {
+    color: white;
+    font-size: 1.2em;
+    padding: 0.5em;
+    cursor: pointer;
+    background-color: #D32F2F; /* Rouge vif */
+    border-radius: 0.5em;
+}
+.stRadio > div > label:hover {
+    background-color: #C62828; /* Rouge légèrement plus foncé */
+    border-radius: 0.3em;
+}
+.stButton > button {
+    background-color: #D32F2F; /* Rouge vif */
+    color: white;
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    padding: 1em 2em;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.logo {width: 150px; height: auto;}
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #D32F2F; /* Rouge vif */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9em;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+</style>
+<div class="footer">
+    © 2023 DataDynamite Solutions. All rights reserved.
+    <br>
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="mailto:info@datadynamite.com">Contact Us</a>
+</div>
+</style>""", unsafe_allow_html=True)
 
 # Login page with "Forgot Password" link
 def login_page():
@@ -197,3 +256,6 @@ if st.session_state.logged_in:
     main_page()  # Appelez la fonction de la page principale
 else:
     login_page()  # Appelez la fonction de la page de connexion
+
+
+
