@@ -273,7 +273,7 @@ def main_page():
         )
         st.image("image7.png", caption="Linear Regression: Actual vs Predicted (Image 7)")
         st.image("image8.png", caption="Logistic Regression: Confusion Matrix (Image 8)")
-        st.image("image9.png", caption="Comparison Between Linear and Logistic Regression (Image 9)")
+        
 
         st.markdown(
         "<h3>Future Directions</h3>"
