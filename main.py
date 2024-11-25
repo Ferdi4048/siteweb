@@ -225,7 +225,7 @@ def main_page():
         st.markdown(
         "<h4>2. Clustering by Length</h4>"
         "<p style='text-align: justify;'>"
-        "Shorter slabs exhibited greater variability and a higher risk of defects, whereas longer slabs displayed more consistent quality."
+        "Shorter slabs exhibited greater variability and a higher risk of defects, whereas longer slabs displayed more consistent quality. We identified three distinct weight-based groups: lightweight, medium weight, and heavyweight slabs. These clusters revealed clear patterns in slab weight distribution across the dataset. Lightweight slabs were associated with a higher frequency of dimensional inconsistencies, while heavyweight slabs demonstrated better overall quality."
         "</p>",
         unsafe_allow_html=True
         )
