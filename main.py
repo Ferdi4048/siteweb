@@ -220,7 +220,7 @@ def main_page():
         unsafe_allow_html=True
         )
         st.image("image1.png", caption="K-Means Clustering on Slab Weight (Image 1)")
-        st.image("image2.png", caption="Distribution of Weight-Based Clusters (Image 2)")
+     
 
         st.markdown(
         "<h4>2. Clustering by Length</h4>"
@@ -230,8 +230,7 @@ def main_page():
         unsafe_allow_html=True
         )
         st.image("image3.png", caption="K-Means Clustering on Slab Length (Image 3)")
-        st.image("image4.png", caption="Distribution of Length-Based Clusters (Image 4)")
-
+        
         st.markdown(
         "<h4>3. Clustering by Thickness</h4>"
         "<p style='text-align: justify;'>"
@@ -240,8 +239,7 @@ def main_page():
         unsafe_allow_html=True
         )
         st.image("image5.png", caption="K-Means Clustering on Slab Thickness (Image 5)")
-        st.image("image6.png", caption="Distribution of Thickness-Based Clusters (Image 6)")
-
+        
         st.markdown(
         "<h4>4. Cluster Validation</h4>"
         "<p style='text-align: justify;'>"
@@ -271,9 +269,7 @@ def main_page():
         "</ul>",
         unsafe_allow_html=True
         )
-        st.image("image7.png", caption="Linear Regression: Actual vs Predicted (Image 7)")
-        st.image("image8.png", caption="Logistic Regression: Confusion Matrix (Image 8)")
-        
+       
 
         st.markdown(
         "<h3>Future Directions</h3>"
