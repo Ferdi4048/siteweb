@@ -185,33 +185,115 @@ def main_page():
 
     # HistoricalDataAnalysis Page
     elif page == "Historical Data Analysis":
-        st.markdown("<h2 style='text-align: center; background-color: black; color: white; padding: 10px;'>Historical Data Analysis</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: white; background-color: black; padding: 10px;'>Detailed Summary of the Machine Learning Project</h2>", unsafe_allow_html=True)
 
         st.markdown(
-            "<h3>Understanding the Context of Dimensional Defects</h3>"
-            "<p style='text-align: justify;'>In the Hot Rolling Process of Mill 4 at Ternium, the occurrence of dimensional defects has "
-            "presented significant challenges in maintaining product quality and operational efficiency. Dimensional defects impact the precision and usability of sheet metal, "
-            "leading to increased costs and inefficiencies. This section explores the historical data we analyzed to identify root causes and patterns.</p>",
-            unsafe_allow_html=True
+        "<h3>Introduction</h3>"
+        "<p style='text-align: justify;'>"
+        "The project carried out by the <em>Data Dynamite</em> team focuses on analyzing and resolving dimensional defects in metal slabs produced at Ternium’s hot rolling mill. "
+        "Using a methodological approach based on the CRISP-DM (Cross-Industry Standard Process for Data Mining) framework, the students explored and analyzed data to address "
+        "industrial challenges by applying various machine learning models."
+        "</p>",
+        unsafe_allow_html=True
         )
 
         st.markdown(
-            "<h3>Data Collection and Initial Analysis</h3>"
-            "<p style='text-align: justify;'>Our team at DataDynamite conducted a descriptive analysis of the available historical "
-            "data. This involved:</p>"
-            "<ul style='text-align: justify;'>"
-            "<li><strong>Data Exploration and Cleaning:</strong> Initial examination focused on identifying data types and structuring the information effectively, setting a solid foundation for deeper analysis.</li>"
-            "<li><strong>Meeting with Ternium:</strong> Discussions with Ternium stakeholders guided our understanding of process nuances and allowed us to align our analytical approach with the company’s operational realities.</li>"
-            "</ul>",
-            unsafe_allow_html=True
+        "<h3>Methodology and Predictive Models</h3>"
+        "<p style='text-align: justify;'>"
+        "The methodology combined supervised and unsupervised learning techniques:</p>"
+        "<ul style='text-align: justify;'>"
+        "<li><strong>K-Means Clustering:</strong> This algorithm grouped slabs into clusters based on their physical properties.</li>"
+        "<li><strong>Supervised Validation:</strong> The clusters were compared to labeled data to verify their consistency with known defects.</li>"
+        "</ul>"
+        "<p style='text-align: justify;'>"
+        "K-Means was chosen for its ability to group unlabeled data, revealing intrinsic patterns. The resulting clusters were interpreted and linked to defect categories through visualization tools and discussions with experts."
+        "</p>",
+        unsafe_allow_html=True
         )
 
         st.markdown(
-            "<h3>Historical Trends and Patterns</h3>"
-            "<p style='text-align: justify;'>Based on our analysis of historical production data, we identified several recurring patterns in defects, "
-            "such as the influence of material thickness, and machine settings. By identifying patterns in the data, we could propose process optimizations and predictive analytics solutions for improving product quality.</p>",
-            unsafe_allow_html=True
+        "<h3>Results and Analysis</h3>"
+        "<h4>1. Clustering by Weight</h4>"
+        "<p style='text-align: justify;'>"
+        "Slabs were divided into three groups: lightweight, medium weight, and heavyweight. Lightweight slabs were more prone to dimensional defects."
+        "</p>",
+        unsafe_allow_html=True
         )
+        st.image("image1.png", caption="K-Means Clustering on Slab Weight (Image 1)")
+        st.image("image2.png", caption="Distribution of Weight-Based Clusters (Image 2)")
+
+        st.markdown(
+        "<h4>2. Clustering by Length</h4>"
+        "<p style='text-align: justify;'>"
+        "Shorter slabs exhibited greater variability and a higher risk of defects, whereas longer slabs displayed more consistent quality."
+        "</p>",
+        unsafe_allow_html=True
+        )
+        st.image("image3.png", caption="K-Means Clustering on Slab Length (Image 3)")
+        st.image("image4.png", caption="Distribution of Length-Based Clusters (Image 4)")
+
+        st.markdown(
+        "<h4>3. Clustering by Thickness</h4>"
+        "<p style='text-align: justify;'>"
+        "Thinner slabs were more susceptible to production issues, while thicker slabs exhibited greater consistency."
+        "</p>",
+        unsafe_allow_html=True
+        )
+        st.image("image5.png", caption="K-Means Clustering on Slab Thickness (Image 5)")
+        st.image("image6.png", caption="Distribution of Thickness-Based Clusters (Image 6)")
+
+        st.markdown(
+        "<h4>4. Cluster Validation</h4>"
+        "<p style='text-align: justify;'>"
+        "Validation confirmed that certain clusters strongly correlated with specific defects, enabling prioritization of high-risk slab families."
+        "</p>",
+        unsafe_allow_html=True
+        )
+
+        st.markdown(
+        "<h3>Actionable Insights</h3>"
+        "<ul style='text-align: justify;'>"
+        "<li><strong>Weight-Length Interactions:</strong> Lightweight and short slabs should be prioritized for quality checks.</li>"
+        "<li><strong>Thickness Variability:</strong> Stricter controls for thinner slabs are necessary to reduce production inconsistencies.</li>"
+        "<li><strong>Cluster-Driven Quality Management:</strong> Integrating clustering results into Ternium’s quality management system would enable more efficient prioritization.</li>"
+        "</ul>",
+        unsafe_allow_html=True
+        )
+
+        st.markdown(
+        "<h3>Model Validation and Limitations</h3>"
+        "<p style='text-align: justify;'>"
+        "Validation was based on comparisons with labeled data and historical trend analysis. However, several limitations were identified:</p>"
+        "<ul style='text-align: justify;'>"
+        "<li><strong>High Dimensionality:</strong> The inclusion of additional variables, such as production temperature, could improve clustering accuracy.</li>"
+        "<li><strong>Data Imbalance:</strong> Some slab categories were overrepresented, potentially biasing clustering results.</li>"
+        "<li><strong>Lack of Dynamic Variables:</strong> Analysis was limited to static physical attributes, excluding dynamic process variables like rolling speed.</li>"
+        "</ul>",
+        unsafe_allow_html=True
+        )
+        st.image("image7.png", caption="Linear Regression: Actual vs Predicted (Image 7)")
+        st.image("image8.png", caption="Logistic Regression: Confusion Matrix (Image 8)")
+        st.image("image9.png", caption="Comparison Between Linear and Logistic Regression (Image 9)")
+
+        st.markdown(
+        "<h3>Future Directions</h3>"
+        "<ul style='text-align: justify;'>"
+        "<li>Incorporate dynamic process variables (e.g., rolling speed, temperature) into clustering analysis.</li>"
+        "<li>Explore alternative algorithms, such as DBSCAN, to capture non-linear relationships.</li>"
+        "<li>Apply resampling techniques to balance data and reduce biases.</li>"
+        "</ul>",
+        unsafe_allow_html=True
+        )
+
+        st.markdown(
+        "<h3>Conclusion</h3>"
+        "<p style='text-align: justify;'>"
+        "This project established a scalable approach to identify and understand defects in the production process. By combining advanced algorithms and supervised validation, the team proposed actionable recommendations to optimize Ternium’s industrial processes. "
+        "Future steps include integrating additional variables and exploring new algorithms for more refined analysis."
+        "</p>",
+        unsafe_allow_html=True
+        )
+
 
     # Our Approach Page
     elif page == "Our Approach":
@@ -256,6 +338,3 @@ if st.session_state.logged_in:
     main_page()  # Appelez la fonction de la page principale
 else:
     login_page()  # Appelez la fonction de la page de connexion
-
-
-
