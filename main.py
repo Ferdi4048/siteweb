@@ -70,6 +70,19 @@ header, footer {visibility: hidden;}
 </div>
 </style>""", unsafe_allow_html=True)
 
+# Reset password page
+def reset_password_page():
+    st.markdown("<h2 style='text-align: center;'>Réinitialisation de mot de passe</h2>", unsafe_allow_html=True)
+    email = st.text_input("Entrez votre email", "")
+
+    if st.button("Envoyer la demande de réinitialisation"):
+        if email:
+            st.success("Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.")
+            # Ici vous pouvez intégrer une logique pour envoyer réellement un e-mail de réinitialisation
+        else:
+            st.error("Veuillez entrer une adresse e-mail valide.")
+
+
 # Login page with "Forgot Password" link
 def login_page():
     col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
@@ -97,18 +110,6 @@ def login_page():
     # Show reset password form when link is clicked
     if 'reset_password' in st.session_state and st.session_state.reset_password:
         reset_password_page()
-
-# Reset password page
-def reset_password_page():
-    st.markdown("<h2 style='text-align: center;'>Réinitialisation de mot de passe</h2>", unsafe_allow_html=True)
-    email = st.text_input("Entrez votre email", "")
-
-    if st.button("Envoyer la demande de réinitialisation"):
-        if email:
-            st.success("Un lien de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.")
-            # Ici vous pouvez intégrer une logique pour envoyer réellement un e-mail de réinitialisation
-        else:
-            st.error("Veuillez entrer une adresse e-mail valide.")
 
 
 
