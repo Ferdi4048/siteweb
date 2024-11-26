@@ -42,6 +42,9 @@ header, footer {visibility: hidden;}
 }
 .logo {width: 150px; height: auto;}
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
     background-color: #D32F2F; /* Rouge vif */
     color: white;
