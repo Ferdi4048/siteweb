@@ -129,7 +129,7 @@ def main_page():
         dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
         st.markdown(f"""
         <div style="display: flex; justify-content: center; padding: 20px;">
-            <a href="{dashboard_url}" target="_blank" style="text-align: center; font-size: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <a href="{dashboard_url}" target="_blank" style="text-align: center; font-size: 5px; padding: 0px 0px; background-color: white; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                 Click here to view the dashboard
             </a>
         </div>
