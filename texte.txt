@@ -1,6 +1,6 @@
-streamlit-option-menu
+streamlit
 plotly
 pandas
 numpy
 localtunnel
-matplotlib=3.7.0
+matplotlib
