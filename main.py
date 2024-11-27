@@ -125,8 +125,8 @@ def main_page():
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
     if st.button("Click here to view the dashboard"):
-        url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
-        webbrowser.open(url)
+        dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+        st.markdown(f'[Click here to view the dashboard]({dashboard_url})', unsafe_allow_html=True)
         
     page = st.radio(
         label="",
