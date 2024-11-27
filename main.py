@@ -1,6 +1,9 @@
 
 import streamlit as st
 from PIL import Image
+import os
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 # Page configuration
 st.set_page_config(page_title="DataDynamite Solution", layout="wide")
@@ -126,14 +129,73 @@ def main_page():
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
     if st.button("Click here to view the dashboard"):
-        dashboard_image = Image.open("dashboard.jpg")
-        st.image(dashboard_image, use_container_width=True)
+                    folders = {
+                'Cluster': '/content/Cluster',
+                'Cluster1': '/content/Cluster1',
+                'Cluster2': '/content/Cluster2',
+                'GoodCluster': '/content/GoodCluster',
+                'GoodCluster1': '/content/GoodCluster1',
+                'GoodCluster2': '/content/GoodCluster2'
+            }
 
-    page = st.radio(
-        label="",
-        options=["Welcome", "Our Client", "Historical Data Analysis", "Our Approach", "Contact Us"],
-        horizontal=True
-    )
+            # Vérification de l'existence des dossiers
+            for folder in folders.values():
+                if not os.path.exists(folder):
+                    st.write(f"Le dossier {folder} n'est pas trouvé.")
+
+            # Fonction pour afficher l'image
+            def display_image(cluster_folder, goodcluster_folder, selected_image):
+                cluster_image_path = os.path.join(cluster_folder, selected_image)
+                goodcluster_image_path = os.path.join(goodcluster_folder, selected_image)
+    
+                # Vérification si l'image existe dans 'goodcluster'
+                if os.path.exists(goodcluster_image_path):
+                    # Chargement des deux images
+                    cluster_img = mpimg.imread(cluster_image_path)
+                    goodcluster_img = mpimg.imread(goodcluster_image_path)
+
+                    # Affichage des deux images côte à côte
+                    fig, axes = plt.subplots(1, 2, figsize=(12, 6))
+        
+                    # Affichage de l'image du dossier 'cluster'
+                    axes[0].imshow(cluster_img)
+                    axes[0].set_title(f"Cluster: {selected_image}")
+                    axes[0].axis('off')
+        
+                    # Affichage de l'image du dossier 'goodcluster'
+                    axes[1].imshow(goodcluster_img)
+                    axes[1].set_title(f"GoodCluster: {selected_image}")
+                    axes[1].axis('off')
+        
+                    st.pyplot(fig)  # Affichage avec Streamlit
+                else:
+                    st.write(f"L'image {selected_image} n'existe pas dans '{goodcluster_folder}'.")
+
+            # Interface utilisateur avec Streamlit
+            st.title("Sélectionnez un dossier et une image")
+
+            # Sélectionner un dossier Cluster et GoodCluster
+            cluster_choice = st.selectbox('Choisir un dossier Cluster:', ['Cluster', 'Cluster1', 'Cluster2'])
+            goodcluster_choice = st.selectbox('Choisir un dossier GoodCluster:', ['GoodCluster', 'GoodCluster1', 'GoodCluster2'])
+
+            # Déterminer les dossiers correspondants
+            cluster_folder = folders[cluster_choice]
+            goodcluster_folder = folders[goodcluster_choice]
+
+            # Liste des images disponibles dans le dossier sélectionné
+            cluster_images = [f for f in os.listdir(cluster_folder) if os.path.isfile(os.path.join(cluster_folder, f))]
+
+            # Sélectionner l'image à afficher
+            selected_image = st.selectbox('Sélectionner une image:', cluster_images)
+
+            # Afficher l'image
+            if selected_image:
+                display_image(cluster_folder, goodcluster_folder, selected_image)
+                page = st.radio(
+                    label="",
+                    options=["Welcome", "Our Client", "Historical Data Analysis", "Our Approach", "Contact Us"],
+                    horizontal=True
+                )
 
     # Welcome Page
     if page == "Welcome":
