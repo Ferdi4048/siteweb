@@ -1,9 +1,6 @@
-streamlit
-streamlit_option_menu
+streamlit-option-menu
 plotly
 pandas
 numpy
 localtunnel
-matplotlib.pyplot 
-matplotlib.image
 matplotlib
