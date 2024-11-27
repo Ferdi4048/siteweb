@@ -126,7 +126,7 @@ def main_page():
 
     if st.button("Click here to view the dashboard"):
         dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
-        st.markdown(f'[Click here to view the dashboard]({dashboard_url})', unsafe_allow_html=True)
+        st.button(f'[Click here to view the dashboard]({dashboard_url})', unsafe_allow_html=True)
         
     page = st.radio(
         label="",
