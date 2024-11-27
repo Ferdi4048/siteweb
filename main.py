@@ -127,19 +127,26 @@ def main_page():
     
     if st.button("Click here to view the dashboard"):
         dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+        
+
+        # URL du tableau de bord
+        dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+
+        
         # Affichage du lien superposé et invisible au-dessus du bouton
         st.markdown(f"""
-        <div style="position: relative; display: inline-block; padding: 20px;">
-            <!-- Lien invisible mais superposé au bouton -->
-                <a href="{dashboard_url}" target="_blank" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; font-size: 5px; padding: 0px; background-color: white; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    Click here to view the dashboard
-                </a>
-            <!-- Bouton visible -->
-            <button style="position: relative; z-index: 1; padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+        <div style="position: relative; display: inline-block;">
+            <!-- Lien invisible mais superposé au bouton rouge -->
+            <a href="{dashboard_url}" target="_blank" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: transparent; color: transparent; text-decoration: none; z-index: 1;">
+                Click here to view the dashboard
+            </a>
+            <!-- Bouton visible, rouge, en dessous du lien invisible -->
+            <button style="position: relative; z-index: 0; padding: 10px 20px; font-size: 16px; background-color: red; color: white; border: none; border-radius: 5px;">
                 Click here to view the dashboard
             </button>
         </div>
         """, unsafe_allow_html=True)
+
     
     page = st.radio(
         label="",
