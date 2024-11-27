@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 import os
-import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 # Page configuration
