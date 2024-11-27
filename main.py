@@ -303,7 +303,7 @@ def main_page():
             "<ul style='text-align: justify;'>"
             "<li><strong>Data Preprocessing:</strong> Cleaning, structuring, and transforming the data for further analysis.</li>"
             "<li><strong>Exploratory Data Analysis (EDA):</strong> Identifying key features and trends through statistical and visual analysis.</li>"
-            "<li><strong>Machine Learning Implementation:</strong> Using supervised learning models to predict defect occurrences and fine-tune the process.</li>"
+            "<li><strong>Machine Learning Implementation:</strong> Principal Component Analysis (PCA): Reduces complex data (sensor readings) into two main directions (Principal Components) that capture most of the differences.</li>"
             "<li><strong>Model Evaluation and Optimization:</strong> Continuously improving the model for better prediction accuracy and operational efficiency.</li>"
             "</ul>",
             unsafe_allow_html=True
