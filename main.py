@@ -1,8 +1,6 @@
 import streamlit as st
 from PIL import Image
 import os
-import ipywidgets as widgets
-from ipywidgets import interact
 
 # Page configuration
 st.set_page_config(page_title="DataDynamite Solution", layout="wide")
@@ -85,7 +83,6 @@ def reset_password_page():
         else:
             st.error("Veuillez entrer une adresse e-mail valide.")
 
-
 # Login page with "Forgot Password" link
 def login_page():
     col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
@@ -114,7 +111,6 @@ def login_page():
     if 'reset_password' in st.session_state and st.session_state.reset_password:
         reset_password_page()
 
-
 # Main page content when logged in
 def main_page():
     col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
@@ -128,6 +124,7 @@ def main_page():
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
     if st.button("Click here to view the dashboard"):
+        # Dossiers disponibles dans Google Colab
         folders = {
             'Cluster': '/content/Cluster',
             'Cluster1': '/content/Cluster1',
@@ -140,7 +137,7 @@ def main_page():
         # Vérification de l'existence des dossiers
         for folder in folders.values():
             if not os.path.exists(folder):
-                st.write(f"Le dossier {folder} n'est pas trouvé.")
+                print(f"Le dossier {folder} n'est pas trouvé.")
 
         # Fonction pour afficher l'image
         def display_image(cluster_folder, goodcluster_folder, selected_image):
@@ -149,52 +146,36 @@ def main_page():
 
             # Vérification si l'image existe dans 'goodcluster'
             if os.path.exists(goodcluster_image_path):
-                # Chargement des deux images
-                cluster_img = mpimg.imread(cluster_image_path)
-                goodcluster_img = mpimg.imread(goodcluster_image_path)
+                # Chargement des deux images avec Pillow
+                cluster_img = Image.open(cluster_image_path)
+                goodcluster_img = Image.open(goodcluster_image_path)
 
-                # Affichage des deux images côte à côte
-                fig, axes = plt.subplots(1, 2, figsize=(12, 6))
-
-                # Affichage de l'image du dossier 'cluster'
-                axes[0].imshow(cluster_img)
-                axes[0].set_title(f"Cluster: {selected_image}")
-                axes[0].axis('off')
-
-                # Affichage de l'image du dossier 'goodcluster'
-                axes[1].imshow(goodcluster_img)
-                axes[1].set_title(f"GoodCluster: {selected_image}")
-                axes[1].axis('off')
-
-                st.pyplot(fig)  # Affichage avec Streamlit
+                # Affichage des deux images dans Streamlit
+                st.image(cluster_img, caption=f"Cluster: {selected_image}", use_column_width=True)
+                st.image(goodcluster_img, caption=f"GoodCluster: {selected_image}", use_column_width=True)
             else:
                 st.write(f"L'image {selected_image} n'existe pas dans '{goodcluster_folder}'.")
 
-        # Interface utilisateur avec Streamlit
-        st.title("Sélectionnez un dossier et une image")
+        # Fonction pour sélectionner les dossiers à partir des menus déroulants
+        def choose_folder():
+            # Utilisation des widgets Streamlit pour sélectionner les dossiers
+            cluster_choice = st.selectbox('Choisir un dossier Cluster:', ['Cluster', 'Cluster1', 'Cluster2'])
+            goodcluster_choice = st.selectbox('Choisir un dossier GoodCluster:', ['GoodCluster', 'GoodCluster1', 'GoodCluster2'])
 
-        # Sélectionner un dossier Cluster et GoodCluster
-        cluster_choice = st.selectbox('Choisir un dossier Cluster:', ['Cluster', 'Cluster1', 'Cluster2'])
-        goodcluster_choice = st.selectbox('Choisir un dossier GoodCluster:', ['GoodCluster', 'GoodCluster1', 'GoodCluster2'])
+            cluster_folder = folders[cluster_choice]
+            goodcluster_folder = folders[goodcluster_choice]
 
-        # Déterminer les dossiers correspondants
-        cluster_folder = folders[cluster_choice]
-        goodcluster_folder = folders[goodcluster_choice]
+            # Liste des images disponibles dans le dossier 'cluster'
+            cluster_images = [f for f in os.listdir(cluster_folder) if os.path.isfile(os.path.join(cluster_folder, f))]
 
-        # Liste des images disponibles dans le dossier sélectionné
-        cluster_images = [f for f in os.listdir(cluster_folder) if os.path.isfile(os.path.join(cluster_folder, f))]
+            # Sélectionner une image depuis le menu déroulant
+            selected_image = st.selectbox('Sélectionner une image:', cluster_images)
 
-        # Sélectionner l'image à afficher
-        selected_image = st.selectbox('Sélectionner une image:', cluster_images)
-
-        # Afficher l'image
-        if selected_image:
+            # Affichage de l'image
             display_image(cluster_folder, goodcluster_folder, selected_image)
-            page = st.radio(
-                label="",
-                options=["Welcome", "Our Client", "Historical Data Analysis", "Our Approach", "Contact Us"],
-                horizontal=True
-            )
+
+        # Appel de la fonction pour choisir le dossier et afficher les images
+        choose_folder()
 
     # Welcome Page
     if page == "Welcome":
@@ -220,28 +201,11 @@ def main_page():
     elif page == "Historical Data Analysis":
         st.markdown("<h2 style='text-align: center; background-color: black; color: white; padding: 10px;'>Historical Data Analysis</h2>", unsafe_allow_html=True)
         st.markdown(
-            "<p style='text-align: justify;'>Our team has analyzed historical data from Ternium's production processes to identify patterns and predict dimensional defects in steel coils. "
-            "By using advanced statistical models and machine learning algorithms, we aim to improve production quality and reduce defects, ensuring the delivery of high-quality steel products.</p>", unsafe_allow_html=True)
+            "<p style='text-align: justify;'>Our team has analyzed historical data from Ternium's production processes to identify patterns and predict dimensional defects. "
+            "By leveraging statistical methods and machine learning, we are able to provide actionable insights that help improve the production process.</p>", unsafe_allow_html=True)
 
-    # Our Approach Page
-    elif page == "Our Approach":
-        st.markdown("<h2 style='text-align: center; background-color: black; color: white; padding: 10px;'>Our Approach</h2>", unsafe_allow_html=True)
-        st.markdown(
-            "<p style='text-align: justify;'>At DataDynamite, we utilize state-of-the-art machine learning algorithms and advanced data analytics techniques to tackle complex challenges in manufacturing. "
-            "Our approach involves understanding the underlying data, identifying key factors contributing to defects, and developing predictive models to optimize production processes.</p>", unsafe_allow_html=True)
-
-    # Contact Us Page
-    elif page == "Contact Us":
-        st.markdown("<h2 style='text-align: center; background-color: black; color: white; padding: 10px;'>Contact Us</h2>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>For more information, feel free to reach out to us:</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Email: info@datadynamite.com</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Phone: +1-800-555-1234</p>", unsafe_allow_html=True)
-
-# Main logic to check if user is logged in
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
-
-if st.session_state.logged_in:
-    main_page()
+# Routing Logic
+if 'logged_in' in st.session_state and st.session_state.logged_in:
+    main_page()  # If logged in, show main page
 else:
-    login_page()
+    login_page()  # Otherwise, show login page
