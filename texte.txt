@@ -3,4 +3,4 @@ plotly
 pandas
 numpy
 localtunnel
-matplotlib
+matplotlib=3.7.0
