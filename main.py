@@ -127,7 +127,13 @@ def main_page():
     
     if st.button("Click here to view the dashboard"):
         dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
-        st.markdown(f'[link]({dashboard_url})', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div style="display: flex; justify-content: center; padding: 20px;">
+            <a href="{dashboard_url}" target="_blank" style="text-align: center; font-size: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                Click here to view the dashboard
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
     
     page = st.radio(
         label="",
