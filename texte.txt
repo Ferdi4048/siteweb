@@ -4,4 +4,6 @@ plotly
 pandas
 numpy
 localtunnel
+matplotlib.pyplot 
+matplotlib.image
 matplotlib
