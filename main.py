@@ -139,7 +139,7 @@ def main_page():
             }
 
             # Vérification de l'existence des dossiers
-            for folder in folders.values():
+        for folder in folders.values():
                 if not os.path.exists(folder):
                     st.write(f"Le dossier {folder} n'est pas trouvé.")
 
