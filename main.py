@@ -127,11 +127,17 @@ def main_page():
     
     if st.button("Click here to view the dashboard"):
         dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+        # Affichage du lien superposé et invisible au-dessus du bouton
         st.markdown(f"""
-        <div style="display: flex; justify-content: center; padding: 20px;">
-            <a href="{dashboard_url}" target="_blank" style="text-align: center; font-size: 5px; padding: 0px 0px; background-color: white; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div style="position: relative; display: inline-block; padding: 20px;">
+            <!-- Lien invisible mais superposé au bouton -->
+                <a href="{dashboard_url}" target="_blank" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; text-align: center; font-size: 5px; padding: 0px; background-color: white; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    Click here to view the dashboard
+                </a>
+            <!-- Bouton visible -->
+            <button style="position: relative; z-index: 1; padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
                 Click here to view the dashboard
-            </a>
+            </button>
         </div>
         """, unsafe_allow_html=True)
     
