@@ -1,6 +1,9 @@
 import streamlit as st
 from PIL import Image
 
+import os
+
+
 # Page configuration
 st.set_page_config(page_title="DataDynamite Solution", layout="wide")
 
