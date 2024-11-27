@@ -124,10 +124,18 @@ def main_page():
 
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
+    
+    dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+    # Bouton pour ouvrir le dashboard
     if st.button("Click here to view the dashboard"):
-        dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
-        st.button(f'[Click here to view the dashboard]({dashboard_url})', unsafe_allow_html=True)
-        
+        # Utilisation de JavaScript pour rediriger l'utilisateur
+        js_code = f"""
+        <script type="text/javascript">
+            window.location.href = "{dashboard_url}";
+        </script>
+        """
+        st.markdown(js_code, unsafe_allow_html=True)  
+    
     page = st.radio(
         label="",
         options=["Welcome", "Our Client", "Historical Data Analysis", "Our Approach", "Contact Us"],
