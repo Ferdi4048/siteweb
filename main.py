@@ -125,16 +125,11 @@ def main_page():
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
     
-    dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
-    # Bouton pour ouvrir le dashboard
     if st.button("Click here to view the dashboard"):
-        # Utilisation de JavaScript pour rediriger l'utilisateur
-        js_code = f"""
-        <script type="text/javascript">
-            window.location.href = "{dashboard_url}";
-        </script>
-        """
-        st.markdown(js_code, unsafe_allow_html=True)  
+        dashboard_url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+        st.markdown(f"""
+        <iframe src="{dashboard_url}" width="100%" height="800" style="border:none;"></iframe>
+        """, unsafe_allow_html=True)
     
     page = st.radio(
         label="",
