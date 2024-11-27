@@ -125,9 +125,9 @@ def main_page():
     st.markdown("<h1 style='text-align: center;'>DataDynamite Solution</h1>", unsafe_allow_html=True)
 
     if st.button("Click here to view the dashboard"):
-        dashboard_image = Image.open("dashboard.jpg")
-        st.image(dashboard_image, use_container_width=True)
-
+        url = "https://dashboard-adftzwppw9b6u7hnabiwmn.streamlit.app/"
+        webbrowser.open(url)
+        
     page = st.radio(
         label="",
         options=["Welcome", "Our Client", "Historical Data Analysis", "Our Approach", "Contact Us"],
